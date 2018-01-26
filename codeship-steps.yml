@@ -1,0 +1,6 @@
+- name: store codeship env vars
+  service: store_codeship_env
+  command: ruby storage_process.rb
+  
+- service: main_app
+  command: /bin/sh -c '[ "$(cat ./ci_timestamp.txt)" == "${CI_TIMESTAMP}" ] && [ ${CI_TIMESTAMP} -gt 0 ] && echo ${CI_TIMESTAMP}'

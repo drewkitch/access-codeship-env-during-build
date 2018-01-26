@@ -1,0 +1,6 @@
+FROM ruby:alpine
+
+RUN apk update && apk add jq
+
+COPY ./tmp/codeship_env.json /tmp/codeship_env.json
+RUN cat /tmp/codeship_env.json | jq -r '.CI_TIMESTAMP' > ./ci_timestamp.txt

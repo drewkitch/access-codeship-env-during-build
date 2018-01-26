@@ -1,0 +1,3 @@
+FROM ruby:alpine
+
+COPY storage_process.rb .

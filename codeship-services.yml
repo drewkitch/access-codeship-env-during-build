@@ -1,0 +1,13 @@
+store_codeship_env:
+  build:
+    image: store_codeship_env
+    dockerfile: Dockerfile.store
+  volumes:
+    - ./tmp:/tmp
+
+main_app:
+  build:
+    image: access_codeship_env
+    dockerfile: Dockerfile.access
+  volumes_from:
+    - store_codeship_env
